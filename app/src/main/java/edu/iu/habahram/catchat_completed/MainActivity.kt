@@ -24,6 +24,14 @@ class MainActivity : AppCompatActivity() {
         */
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+         /*
+           Note: you cannot use the host directly to find the
+           navController. The following code with throw an error saying
+           findNavController() cannot find a navController
+         */
+//        val navHostFragmentView = findViewById<View>(R.id.nav_host_fragment)
+//        val navController = navHostFragmentView.findNavController()
+
         val navController = navHostFragment.navController
         val builder = AppBarConfiguration.Builder(navController.graph)
         val appBarConfiguration = builder.build()
