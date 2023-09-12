@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        /* configure the toolbar to include an up button and display
+        /* configure the toolbar to display
            which screen you have navigated to.
         */
         val navHostFragment =
