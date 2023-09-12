@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,18 +31,21 @@ class MainActivity : AppCompatActivity() {
            Note: you cannot use the host directly to find the
            navController. The following code with throw an error saying
            findNavController() cannot find a navController
-         */
-//        val navHostFragmentView = findViewById<View>(R.id.nav_host_fragment)
-//        val navController = navHostFragmentView.findNavController()
 
+         val navHostFragmentView = findViewById<View>(R.id.nav_host_fragment)
+         val navController = navHostFragmentView.findNavController()
+        */
         val navController = navHostFragment.navController
+        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
         val builder = AppBarConfiguration.Builder(navController.graph)
+        // add the drawer to the AppBarConfiguration
+        builder.setOpenableLayout(drawer)
         val appBarConfiguration = builder.build()
         toolbar.setupWithNavController(navController, appBarConfiguration)
 
-        // link the bottom navigation bar to the navigation controller.
-        val bottomNavView = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        bottomNavView.setupWithNavController(navController)
+        // link the drawer to the navigation controller.
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+        NavigationUI.setupWithNavController(navView, navController)
     }
 
     /*
