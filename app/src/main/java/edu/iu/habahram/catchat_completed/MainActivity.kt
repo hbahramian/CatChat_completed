@@ -3,6 +3,7 @@ package edu.iu.habahram.catchat_completed
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -52,6 +53,8 @@ class MainActivity : AppCompatActivity() {
     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
+        val toast = Toast.makeText(this, "${item.title} is selected", Toast.LENGTH_LONG)
+        toast.show()
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 }
