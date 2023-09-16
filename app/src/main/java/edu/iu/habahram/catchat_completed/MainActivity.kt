@@ -13,6 +13,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+    private val TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,9 +39,13 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = builder.build()
         toolbar.setupWithNavController(navController, appBarConfiguration)
 
+
+
         // link the bottom navigation bar to the navigation controller.
         val bottomNavView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNavView.setupWithNavController(navController)
+
+
     }
 
     /*
